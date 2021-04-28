@@ -1,0 +1,51 @@
+﻿@model (string num1, string num2, string result)
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        /*insert css here*/
+        .select{
+            margin: 10px 0px 10px 0px
+        }
+
+        .result{
+            font-size: larger;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        
+        .secretLink{
+            margin-top: 450px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <form method="post" action="Home/DoMath">
+        <input id="box1" type="text" name="firstNum" value="@Model.num1">
+
+        <input id="box2" type="text" name="secondNum" value="@Model.num2" onchange="NoZero();">
+
+        <div class="select">
+            <select id="oper" name="operation" onchange="NoZero();">
+                <option value="add">Add</option>
+                <option value="sub">Subtract</option>
+                <option value="mul">Multiply</option>
+                <option value="div">Divide</option>
+                <option value="pow">Power</option>
+            </select>
+        </div>
+        
+        <div>
+            <button type="submit">Calculate</button>
+        </div>
+   
+    </form>
+
+    <div class="result">R   E   S   U   L   T:   @Model.result</div>
+
+    <div class="secretLink">
+    @Html.ActionLink("The End", "ThankYou", "Home")
+    </div>
+</body>
